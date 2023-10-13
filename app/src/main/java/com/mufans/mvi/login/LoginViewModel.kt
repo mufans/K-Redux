@@ -48,18 +48,21 @@ class LoginViewModel : MviViewModel<LoginState, LoginIntent, LoginEvent>() {
     }
 }
 
-private fun FlowAction.logoutAction() = filterIsInstance<LoginIntent.Logout>().map {
-    LoginReducer.Logout
-}
-
-private fun FlowAction.loginAction() = filterIsInstance<LoginIntent.RequestLogin>().map {
-    val resp = MockUserRepository.login(it.name, it.pass)
-    if (resp.success) {
-        LoginReducer.Success(it.name, resp.token ?: "")
-    } else {
-        LoginReducer.Failure(resp.message ?: "")
+private fun FlowAction.logoutAction() = filterIsInstance<LoginIntent.Logout>()
+    .map {
+        MockUserRepository.logout()
+        LoginReducer.Logout
     }
-}
+
+private fun FlowAction.loginAction() = filterIsInstance<LoginIntent.RequestLogin>()
+    .map {
+        val resp = MockUserRepository.login(it.name, it.pass)
+        if (resp.success) {
+            LoginReducer.Success(it.name, resp.token ?: "")
+        } else {
+            LoginReducer.Failure(resp.message ?: "")
+        }
+    }
 
 
 internal class LoginMiddleware : Middleware<LoginState> {

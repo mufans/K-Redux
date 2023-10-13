@@ -11,6 +11,8 @@ import kotlinx.coroutines.delay
  */
 interface UserRepository {
     suspend fun login(userName: String, pwd: String): LoginResp
+
+    suspend fun logout()
 }
 
 object MockUserRepository : UserRepository {
@@ -21,5 +23,9 @@ object MockUserRepository : UserRepository {
         } else {
             LoginResp(false, "login failed")
         }
+    }
+
+    override suspend fun logout() {
+        delay(10)
     }
 }
