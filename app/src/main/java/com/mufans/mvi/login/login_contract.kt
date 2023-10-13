@@ -6,7 +6,7 @@ import com.mufans.state.mvi.MviIntent
 import com.mufans.state.mvi.MviState
 
 /**
- * @author liuj
+ * @author mufans
  * @created on 2023/10/4
  * @desc desc
  *

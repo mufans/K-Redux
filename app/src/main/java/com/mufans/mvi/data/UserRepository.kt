@@ -4,7 +4,7 @@ import com.mufans.mvi.data.model.LoginResp
 import kotlinx.coroutines.delay
 
 /**
- * @author liuj
+ * @author mufans
  * @created on 2023/10/13
  * @desc desc
  *

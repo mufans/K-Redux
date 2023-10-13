@@ -18,7 +18,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 /**
- * @author liuj
+ * @author mufans
  * @created on 2023/8/14
  * @desc 参考Redux实现的状态管理框架。作为Mvi架构原型基础，提供唯一可信数据源、单向数据流的状态更新以及订阅。
  * 其中Action对应Intent, Reducer响应Action更新状态，Middleware实现切面逻辑，

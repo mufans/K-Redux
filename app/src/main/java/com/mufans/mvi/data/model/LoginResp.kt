@@ -1,7 +1,7 @@
 package com.mufans.mvi.data.model
 
 /**
- * @author liuj
+ * @author mufans
  * @created on 2023/10/13
  * @desc desc
  *

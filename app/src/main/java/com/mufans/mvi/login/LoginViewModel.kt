@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.merge
 
 /**
- * @author liuj
+ * @author mufans
  * @created on 2023/10/4
  * @desc desc
  *
