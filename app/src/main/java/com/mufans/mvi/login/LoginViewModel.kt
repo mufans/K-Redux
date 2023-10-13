@@ -1,8 +1,10 @@
 package com.mufans.mvi.login
 
 import com.mufans.mvi.data.MockUserRepository
+import com.mufans.state.Action
 import com.mufans.state.Event
 import com.mufans.state.FlowAction
+import com.mufans.state.Middleware
 import com.mufans.state.Reducer
 import com.mufans.state.Store
 import com.mufans.state.mvi.MviViewModel
@@ -23,8 +25,11 @@ class LoginViewModel : MviViewModel<LoginState, LoginIntent, LoginEvent>() {
 
 
     override fun buildStore(initState: LoginState): Store<LoginState> {
-        return Store.StoreBuilder(initState).addActionToReducer(createActionToReducer())
-            .addSingleEventReducer(::reducerToEvent).build()
+        return Store.StoreBuilder(initState)
+            .addActionToReducer(createActionToReducer())
+            .addSingleEventReducer(::reducerToEvent)
+            .addMiddleware(LoginMiddleware())
+            .build()
     }
 
 
@@ -57,3 +62,9 @@ private fun FlowAction.loginAction() = filterIsInstance<LoginIntent.RequestLogin
 }
 
 
+internal class LoginMiddleware : Middleware<LoginState> {
+    override suspend fun handle(store: Store<LoginState>, action: Action): Action {
+        // 拦截Action 处理相关逻辑
+        return action
+    }
+}
